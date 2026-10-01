@@ -20,7 +20,9 @@ test('chaque prédiction tient sur deux lignes, sans ligne vide, dans les deux l
 	}
 });
 
-test('les deux prédictions disent bien pile et face', () => {
-	assert.equal(PREDICTIONS.pile, '0,20 euro\npile');
-	assert.equal(PREDICTIONS.face, '0,20 euro\nface');
+test('les deux prédictions disent bien pile et face, dans chaque langue', () => {
+	assert.equal(t(PREDICTIONS.pile, 'fr'), '0,20 euro\npile');
+	assert.equal(t(PREDICTIONS.face, 'fr'), '0,20 euro\nface');
+	assert.equal(t(PREDICTIONS.pile, 'en'), '0.20 euro\ntails');
+	assert.equal(t(PREDICTIONS.face, 'en'), '0.20 euro\nheads');
 });
