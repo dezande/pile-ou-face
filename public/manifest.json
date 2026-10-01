@@ -1,0 +1,20 @@
+{
+	"id": "./",
+	"name": "Pile ou face",
+	"short_name": "Pile ou face",
+	"description": "Une carte à prédiction : le haut de l'écran la retourne sur « 0,20 euro pile », le bas sur « 0,20 euro face ». 100 % hors-ligne.",
+	"lang": "fr",
+	"dir": "ltr",
+	"start_url": "./",
+	"scope": "./",
+	"display": "fullscreen",
+	"orientation": "portrait",
+	"background_color": "#071a0f",
+	"theme_color": "#071a0f",
+	"icons": [
+		{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+		{ "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+		{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+		{ "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+	]
+}

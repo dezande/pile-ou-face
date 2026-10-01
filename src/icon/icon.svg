@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Icône de l'app : la carte retournée sur le tapis vert, une prédiction écrite et soulignée de
+	deux traits, et dessous la pièce de 20 centimes dessinée au stylo, avec ses sept encoches.
+	Derrière, une seconde carte montre le dos Art déco. Dessinée ici une fois ;
+	public/icons/icon-192.png et icon-512.png en sont rendus (voir README, « Icônes »). Le dessin
+	occupe le centre du carré : les coins sont perdus par les masques d'icône d'Android
+	(purpose « maskable »).
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+	<defs>
+		<radialGradient id="tapis" cx="50%" cy="38%" r="78%">
+			<stop offset="0" stop-color="#1a5130"/>
+			<stop offset="45%" stop-color="#10361f"/>
+			<stop offset="100%" stop-color="#071a0f"/>
+		</radialGradient>
+		<linearGradient id="dos" x1="0" y1="0" x2="1" y2="1">
+			<stop offset="0" stop-color="#93222a"/>
+			<stop offset="1" stop-color="#430e13"/>
+		</linearGradient>
+		<linearGradient id="papier" x1="0" y1="0" x2="0" y2="1">
+			<stop offset="0" stop-color="#fbf6ea"/>
+			<stop offset="1" stop-color="#e6dcc6"/>
+		</linearGradient>
+	</defs>
+
+	<rect width="512" height="512" fill="url(#tapis)"/>
+
+	<g transform="translate(256 256) scale(.9) translate(-256 -256)">
+
+	<!-- La carte de derrière, face en bas : marge de papier, cadre et soleil levant dorés. -->
+	<g transform="rotate(-12 256 438)">
+		<rect x="146" y="112" width="220" height="308" rx="26" fill="#f3ecdd"/>
+		<rect x="157" y="123" width="198" height="286" rx="16" fill="url(#dos)"/>
+		<g fill="none" stroke="#e8ca88" stroke-width="4">
+			<rect x="168" y="134" width="176" height="264" rx="6"/>
+			<circle cx="256" cy="266" r="52"/>
+			<path d="M256 244l22 22-22 22-22-22Z"/>
+		</g>
+	</g>
+
+	<!-- La carte retournée : la prédiction, soulignée deux fois, et la pièce. -->
+	<g transform="rotate(5 256 438)">
+		<rect x="146" y="112" width="220" height="308" rx="26" fill="url(#papier)" stroke="#1c2743" stroke-opacity=".2" stroke-width="3"/>
+		<g fill="none" stroke="#1c2743" stroke-linecap="round" stroke-linejoin="round">
+			<!-- Un mot écrit d'un seul trait, en attachées. -->
+			<path stroke-width="10" d="M178 182c5-28 20-30 23-7 2 22-11 27-10 8 1-25 21-28 27-5 5 18-7 23-7 7 0-22 20-25 27-5 5 15-6 22-6 7 0-18 18-23 25-7 4 10 1 18-4 18"/>
+			<!-- Les deux traits. -->
+			<path stroke-width="7" d="M176 222c40-6 100 2 160-4"/>
+			<path stroke-width="6" d="M190 236c36-4 84 2 128-2"/>
+			<!-- La pièce de 20 centimes : le bord à encoches, repassé, et le listel. -->
+			<path stroke-width="7" d="M256 258c12 0 13 6 21 8 8 3 13-2 21 5 7 7 2 12 5 20 3 8 8 9 8 21s-5 13-8 21c-3 8 2 13-5 20-8 7-13 2-21 5-8 2-9 8-21 8s-13-6-21-8c-8-3-13 2-21-5-7-7-2-12-5-20-3-8-8-9-8-21s5-13 8-21c3-8-2-13 5-20 8-7 13-2 21-5 8-2 9-8 21-8Z"/>
+			<circle cx="256" cy="312" r="38" stroke-width="4"/>
+			<!-- « 20 ». -->
+			<path stroke-width="7" d="M226 304c2-10 18-12 20-2 2 9-14 18-20 28h22"/>
+			<path stroke-width="7" d="M270 300c-10 0-14 8-14 16s4 16 12 16 14-8 14-16-4-16-12-16Z"/>
+		</g>
+	</g>
+
+	</g>
+</svg>
