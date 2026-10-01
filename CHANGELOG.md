@@ -14,6 +14,10 @@ Les numéros suivent [semver](https://semver.org/lang/fr/) : `MAJEUR.MINEUR.CORR
 
 ---
 
+## [Non publié]
+
+- **La prédiction en anglais.** Avec l'app réglée sur `EN`, la carte écrit « 0.20 euro / tails » en haut et « 0.20 euro / heads » en bas : en anglais, pile se dit *tails* et face *heads*, et le point décimal remplace la virgule. Seul le menu était traduit jusqu'ici ; la prédiction restait en français. Une carte déjà retournée est réécrite dans la nouvelle langue. La pièce dessinée ne change pas, ses inscriptions étant les mêmes dans les deux langues.
+
 ## [0.1.0] — 2026-10-01
 
 1 commit

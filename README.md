@@ -9,8 +9,8 @@ Une PWA mono-page, 100 % hors-ligne, pilotée au doigt, au clavier ou avec une t
 
 | Geste | Effet |
 | --- | --- |
-| **Toucher la moitié du haut**, carte face cachée | La carte se retourne sur « 0,20 euro / pile » et la pièce côté pile |
-| **Toucher la moitié du bas**, carte face cachée | La carte se retourne sur « 0,20 euro / face » et la pièce côté face |
+| **Toucher la moitié du haut**, carte face cachée | La carte se retourne sur « 0,20 euro / pile » (en anglais « 0.20 euro / tails ») et la pièce côté pile |
+| **Toucher la moitié du bas**, carte face cachée | La carte se retourne sur « 0,20 euro / face » (en anglais « 0.20 euro / heads ») et la pièce côté face |
 | **Deux touchers rapprochés**, carte armée ou retournée | La carte revient face cachée, prête pour un nouveau tour |
 | **Appui de 3 s** n'importe où | Menu |
 
@@ -33,7 +33,7 @@ Le menu règle un **délai avant le retournement**, de 0 à 10 s, par demi-secon
 
 ### La carte
 
-**Les prédictions** sont dans **[`src/content/predictions.ts`](src/content/predictions.ts)** : une pour pile, une pour face, chacune sur deux lignes (le retour à la ligne `\n` décide où ça casse, et rien d'autre). Les tests vérifient qu'elles tiennent bien sur deux lignes. Elles sont écrites à la main, à l'encre bleu-noir sur un papier crème, dans la police **[Caveat](https://fonts.google.com/specimen/Caveat)**, embarquée avec l'app (`public/fonts/`, licence [SIL OFL 1.1](public/fonts/OFL.txt)) : l'écriture est la même sur tous les téléphones. Leur taille est calculée pour remplir la carte, et chacune est soulignée de deux traits.
+**Les prédictions** sont dans **[`src/content/predictions.ts`](src/content/predictions.ts)** : une pour pile, une pour face, en français et en anglais, chacune sur deux lignes (le retour à la ligne `\n` décide où ça casse, et rien d'autre). Les tests vérifient qu'elles tiennent bien sur deux lignes. Elles sont écrites à la main, à l'encre bleu-noir sur un papier crème, dans la police **[Caveat](https://fonts.google.com/specimen/Caveat)**, embarquée avec l'app (`public/fonts/`, licence [SIL OFL 1.1](public/fonts/OFL.txt)) : l'écriture est la même sur tous les téléphones. Leur taille est calculée pour remplir la carte, et chacune est soulignée de deux traits.
 
 **La pièce de 20 centimes** ([`src/stage/dessin-piece.ts`](src/stage/dessin-piece.ts)) est un croquis au stylo, de la même encre que la prédiction, et grandit avec elle :
 
@@ -46,7 +46,7 @@ Le bord a les sept encoches de la vraie pièce, il est repassé deux fois sans r
 
 ### Le menu
 
-Remettre la carte face cachée, le délai, la langue de l'interface (`FR` / `EN` — la prédiction, elle, reste « 0,20 euro pile/face »), le dos et sa couleur, et la jauge de l'appui long — à masquer avant de jouer si le public voit l'écran. Le numéro de version est sous le titre ; le bas du menu détaille ce qui est installé (build, commit, cache hors-ligne, stockage, état de l'écran allumé). Juste après l'ouverture par l'appui long, les touchers dans le menu sont ignorés un court instant : le doigt qui se relève ne clique pas sur le bouton placé dessous.
+Remettre la carte face cachée, le délai, la langue (`FR` / `EN`, pour le menu comme pour la prédiction : en anglais, pile se dit « tails » et face « heads »), le dos et sa couleur, et la jauge de l'appui long — à masquer avant de jouer si le public voit l'écran. Le numéro de version est sous le titre ; le bas du menu détaille ce qui est installé (build, commit, cache hors-ligne, stockage, état de l'écran allumé). Juste après l'ouverture par l'appui long, les touchers dans le menu sont ignorés un court instant : le doigt qui se relève ne clique pas sur le bouton placé dessous.
 
 **L'app s'ouvre toujours sur la carte face cachée**, même après un tour laissé en plan. Les réglages, eux, sont enregistrés sur l'appareil et conservés d'une version à l'autre.
 

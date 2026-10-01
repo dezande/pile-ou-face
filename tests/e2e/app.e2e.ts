@@ -11,6 +11,7 @@ import { setTimeout as sleep } from 'node:timers/promises';
 import { Browser, SCREEN, type Page } from '../../src/kit/node/chrome.ts';
 import { startStaticServer, type StaticServer } from '../../src/kit/node/static-server.ts';
 import { PREDICTIONS } from '../../src/content/predictions.ts';
+import { t } from '../../src/logic/i18n.ts';
 import { APP_VERSION } from '../../src/version.ts';
 import {
 	appuiLong, BAS, CENTER, click, coteEcrit, DEBORDEMENT, doubleToucher, HAUT, isMenuOpen, openApp, PIECE,
@@ -54,7 +55,7 @@ test('toucher le haut : la carte se retourne sur « 0,20 euro pile » et la piè
 	await withApp({}, async (page) => {
 		await toucher(page, HAUT);
 		assert.equal(await page.evaluate(retournee), true);
-		assert.equal(await page.evaluate(PREDICTION), PREDICTIONS.pile);
+		assert.equal(await page.evaluate(PREDICTION), t(PREDICTIONS.pile, 'fr'));
 		assert.equal(await page.evaluate(PIECE), 'pile');
 		assert.equal(await page.evaluate(`[...document.querySelectorAll('#table svg.piece text')].some((t) => t.textContent === '20')`), true, 'le côté de la valeur');
 	});
@@ -64,7 +65,7 @@ test('toucher le bas : la carte se retourne sur « 0,20 euro face » et la pièc
 	await withApp({}, async (page) => {
 		await toucher(page, BAS);
 		assert.equal(await page.evaluate(retournee), true);
-		assert.equal(await page.evaluate(PREDICTION), PREDICTIONS.face);
+		assert.equal(await page.evaluate(PREDICTION), t(PREDICTIONS.face, 'fr'));
 		assert.equal(await page.evaluate(PIECE), 'face');
 		assert.equal(await page.evaluate(`[...document.querySelectorAll('#table svg.piece text')].some((t) => t.textContent === 'RF')`), true, 'le côté français');
 	});
@@ -148,7 +149,7 @@ test('délai : la carte armée ne se retourne qu’au bout du délai', TEST_TIME
 		// Pendant le délai, un toucher ne change pas le côté choisi.
 		await page.tap(HAUT);
 		await page.waitFor(retournee, 'carte retournée après le délai', 3000);
-		assert.equal(await page.evaluate(PREDICTION), PREDICTIONS.face);
+		assert.equal(await page.evaluate(PREDICTION), t(PREDICTIONS.face, 'fr'));
 	});
 });
 
@@ -246,7 +247,7 @@ test('menu : dos et couleur choisis en les regardant, appliqués à la carte', T
 	});
 });
 
-test('langue : l’interface passe en anglais, la prédiction reste la même', TEST_TIMEOUT, async () => {
+test('langue : en anglais, l’interface et la prédiction changent, la pièce reste la même', TEST_TIMEOUT, async () => {
 	await withApp({}, async (page) => {
 		await toucher(page, HAUT);
 		await pressKey(page, 'm');
@@ -254,7 +255,17 @@ test('langue : l’interface passe en anglais, la prédiction reste la même', T
 		await click(page, '#langue-seg button[data-valeur="en"]');
 		await page.waitFor(`document.documentElement.lang === 'en'`, 'app en anglais');
 		assert.equal(await text(page, '#reset-btn'), 'Reset the card');
-		assert.equal(await page.evaluate(PREDICTION), PREDICTIONS.pile);
+		// La carte déjà retournée est réécrite dans la nouvelle langue.
+		assert.equal(await page.evaluate(PREDICTION), '0.20 euro\ntails');
+		assert.equal(await page.evaluate(PIECE), 'pile');
+		assert.equal(await page.evaluate(DEBORDEMENT), null);
+
+		// Un nouveau tour, en bas : heads.
+		await click(page, '#close-btn');
+		await doubleToucher(page);
+		await toucher(page, BAS);
+		assert.equal(await page.evaluate(PREDICTION), '0.20 euro\nheads');
+		assert.equal(await page.evaluate(PIECE), 'face');
 		assert.equal(await page.evaluate(DEBORDEMENT), null);
 	});
 });
@@ -292,7 +303,7 @@ test('hors-ligne : une fois ouverte, l’app redémarre serveur arrêté', TEST_
 			await page.reload();
 			await page.waitFor(PRETE, 'app rechargée hors-ligne', 10_000);
 			await toucher(page, BAS);
-			assert.equal(await page.evaluate(PREDICTION), PREDICTIONS.face, 'le tour se joue sans réseau');
+			assert.equal(await page.evaluate(PREDICTION), t(PREDICTIONS.face, 'fr'), 'le tour se joue sans réseau');
 			assert.equal(await page.evaluate(PIECE), 'face');
 		}, offlineServer.url);
 	} finally {

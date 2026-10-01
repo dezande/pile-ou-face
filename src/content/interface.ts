@@ -39,11 +39,11 @@ export const INTERFACE = {
 	'aide.titre': { fr: 'Gestes et touches', en: 'Gestures and keys' },
 	'aide.haut': {
 		fr: 'Toucher la moitié du haut de l\'écran : la carte se retourne sur « 0,20 euro pile ».',
-		en: 'Tap the top half of the screen: the card flips to “0,20 euro pile”.',
+		en: 'Tap the top half of the screen: the card flips to “0.20 euro tails”.',
 	},
 	'aide.bas': {
 		fr: 'Toucher la moitié du bas : la carte se retourne sur « 0,20 euro face ».',
-		en: 'Tap the bottom half: the card flips to “0,20 euro face”.',
+		en: 'Tap the bottom half: the card flips to “0.20 euro heads”.',
 	},
 	'aide.delai': {
 		fr: 'Avec un délai, la carte se retourne seule, après le délai réglé ci-dessus. Une fois le choix fait, un autre toucher ne change plus rien.',
