@@ -16,6 +16,8 @@ export const INTERFACE = {
 	'menu.titre': { fr: 'Menu', en: 'Menu' },
 	'menu.remettre': { fr: 'Remettre la carte', en: 'Reset the card' },
 	'menu.fermer': { fr: 'Fermer', en: 'Close' },
+	// Le nom de l'app qui regroupe tous les tours : le même dans les deux langues.
+	'menu.mesTours': 'Mes tours',
 	'menu.langue': { fr: 'Langue', en: 'Language' },
 	'menu.delai': { fr: 'Délai avant le retournement', en: 'Delay before the card flips' },
 	'menu.delaiAide': {
