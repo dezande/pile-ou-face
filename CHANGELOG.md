@@ -10,11 +10,14 @@ Les numéros suivent [semver](https://semver.org/lang/fr/) : `MAJEUR.MINEUR.CORR
 
 | Version | Commits | Date | En une phrase |
 | --- | --- | --- | --- |
+| [0.2.0] | 5 | 2026-10-03 | La prédiction en anglais, le bouton « Mes tours » et un identifiant propre |
 | [0.1.0] | 1 | 2026-10-01 | Première version : une carte, pile en haut, face en bas, et la pièce dessinée à la main |
 
 ---
 
-## [Non publié]
+## [0.2.0] — 2026-10-03
+
+5 commits
 
 - **La prédiction en anglais.** Avec l'app réglée sur `EN`, la carte écrit « 0.20 euro / tails » en haut et « 0.20 euro / heads » en bas : en anglais, pile se dit *tails* et face *heads*, et le point décimal remplace la virgule. Seul le menu était traduit jusqu'ici ; la prédiction restait en français. Une carte déjà retournée est réécrite dans la nouvelle langue. La pièce dessinée ne change pas, ses inscriptions étant les mêmes dans les deux langues.
 - **L'app s'installe enfin à côté des autres accessoires de scène.** Son manifeste déclarait `"id": "./"`, que Chrome résout à partir de la racine du site, et non du dossier de l'app : la boule de cristal, l'analyseur, les six prédictions et Pile ou face avaient toutes le même identifiant, `https://dezande.github.io/`. Sur Android, dès que l'une était installée, Chrome prenait les autres pour elle : il proposait de les ouvrir au lieu de les installer, puis échouait (« Impossible d'ouvrir l'application »). L'identifiant est maintenant `/pile-ou-face/`, propre à l'app. Une version déjà installée est vue comme une autre app : la désinstaller, puis réinstaller.
@@ -66,4 +69,5 @@ gh release create v0.2.0 --title "v0.2.0 — Titre" --notes-file notes.md
 
 
 
+[0.2.0]: https://github.com/dezande/pile-ou-face/releases/tag/v0.2.0
 [0.1.0]: https://github.com/dezande/pile-ou-face/releases/tag/v0.1.0
